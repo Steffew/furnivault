@@ -14,18 +14,24 @@ body {
 
 /* Navbar */
 .navbar {
-    background-color: #11202C !important;
+    background-color: rgba(0, 0, 0, 0.25);
     height: 50px;
 }
 
 .navbar-brand {
     font-size: 24px;
     font-weight: 700;
+    color: rgba(255, 255, 255, .25) !important;
+    transition: all 0.5s;
+}
+
+.navbar-brand:hover {
+    color: rgba(255, 255, 255, .75) !important;
 }
 
 .nav-button {
     font-size: 14px !important;
-    color: rgba(255, 255, 255, 0.75) !important;
+    color: rgba(255, 255, 255, 0.75);
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     transition: all 0.25s;

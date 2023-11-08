@@ -1,24 +1,41 @@
+/* Main */
 html {
-  font-size: 14px;
-}
-
-.navbar {
-    background-color: #11202C !important;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
+    font-size: 14px;
     position: relative;
     min-height: 100%;
 }
 
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
 body {
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     background-color: #1D3549;
     color: #F0F4EF;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #11202C !important;
+    height: 50px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.nav-button {
+    color: rgba(255, 255, 255, 0.75) !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.25s;
+}
+.nav-button:hover {
+    color: rgba(255, 255, 255, 1) !important;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
 }

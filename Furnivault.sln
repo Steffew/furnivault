@@ -5,9 +5,9 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Furnivault", "Furnivault\Furnivault.csproj", "{9E8D9321-8E24-4C41-8B92-0234C24A66F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furnivault.Core", "Furnivault.Core\Furnivault.Core.csproj", "{D7DD7679-7697-4E05-AF69-3F6E958F9AC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Furnivault.Core", "Furnivault.Core\Furnivault.Core.csproj", "{D7DD7679-7697-4E05-AF69-3F6E958F9AC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furnivault.Data", "Furnivault.Data\Furnivault.Data.csproj", "{C60A8E1A-391F-4174-A468-FCBF3184F7BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Furnivault.Data", "Furnivault.Data\Furnivault.Data.csproj", "{C60A8E1A-391F-4174-A468-FCBF3184F7BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

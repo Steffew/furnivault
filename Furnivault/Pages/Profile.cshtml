@@ -3,3 +3,30 @@
 @{
     ViewData["Title"] = "Profile";
 }
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-5 text-end">
+            <p>Logged in as</p>
+        </div>
+        <div class="col-5">
+            <p>ACCOUNTNAME</p>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-5 text-end">
+            <p>Total items</p>
+        </div>
+        <div class="col-5">
+            <p>TOTALITEMS</p>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-5 text-end">
+            <a class="button btn" asp-area="" asp-page="/Index">Return</a>
+        </div>
+        <div class="col-6">
+            <a class="button btn" asp-area="" asp-action="LogOut">Log out</a>
+        </div>
+    </div>
+</div>

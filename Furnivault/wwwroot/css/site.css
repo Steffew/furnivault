@@ -44,8 +44,10 @@ body {
 
 /* AddItem page */
 input.item-manager-field {
-    border-style: none;
+    border-style: solid;
+    border-width: 1px;
     border-radius: 4px;
+    border-color: rgba(255, 255, 255, 0.25);
     color: #F0F4EF;
     background: rgba(255, 255, 255, 0.25);
     text-anchor: start;

@@ -41,3 +41,13 @@ body {
     background-color: rgba(255, 255, 255, 0.25);
     border-radius: 8px;
 }
+
+/* AddItem page */
+input.item-manager-field {
+    border-style: none;
+    border-radius: 4px;
+    color: #F0F4EF;
+    background: rgba(255, 255, 255, 0.25);
+    text-anchor: start;
+    width: 50%;
+}

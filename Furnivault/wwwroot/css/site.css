@@ -58,7 +58,7 @@ body {
 }
 
 /* AddItem page */
-textarea.item-manager-field {
+.item-manager-field {
     border-style: solid;
     border-width: 1px;
     border-radius: 4px;
@@ -72,11 +72,11 @@ textarea.item-manager-field {
     transition: all ease-in-out 0.25s;
 }
 
-textarea.item-manager-field:hover {
+.item-manager-field:hover {
     border-color: rgba(255, 255, 255, 0.5);
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-textarea.item-manager-field:focus {
+.item-manager-field:focus {
     background-color: rgba(255, 255, 255, 0.9);
 }

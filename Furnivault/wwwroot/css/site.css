@@ -54,8 +54,7 @@ input.item-manager-field {
     width: 50%;
     transition: all ease-in-out 0.25s;
 }
-input.item-manager-field:hover {
-    border-bottom-color: blue;
-    border-color: rgba(255, 255, 255, 0.75);
+    input.item-manager-field:hover {
+    border-color: rgba(255, 255, 255, 0.5);
     background: rgba(255, 255, 255, 0.5);
-}
+    }

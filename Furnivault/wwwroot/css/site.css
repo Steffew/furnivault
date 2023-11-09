@@ -61,9 +61,8 @@ textarea.item-manager-field:hover {
     border-color: rgba(255, 255, 255, 0.5);
     background-color: rgba(255, 255, 255, 0.5);
 }
-textarea.item-manager-field:active {
-    border-color: rgba(255, 255, 255, 0.5);
-    background-color: red;
+textarea.item-manager-field:focus {
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .big {

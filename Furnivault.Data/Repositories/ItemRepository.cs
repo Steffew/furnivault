@@ -98,7 +98,7 @@ namespace Furnivault.Data.Repositories
                     command.Parameters.AddWithValue("@Name", item.Name);
                     command.Parameters.AddWithValue("@Identifier", item.Identifier ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("@Favorite", item.Favorite);
-                    command.Parameters.AddWithValue("@Descriptin", item.Description ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@Description", item.Description ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("@Image", item.Image ?? (object)DBNull.Value);
 
                     connection.Open();

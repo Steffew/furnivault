@@ -1,4 +1,5 @@
 ﻿using Furnivault.Data.DTOs;
+using System.Data.SqlClient;
 
 namespace Furnivault.Data.Repositories
 {
@@ -11,11 +12,36 @@ namespace Furnivault.Data.Repositories
             _connectionString = connectionString;
         }
 
-        public ItemDTO GetItemById(int itemId)
+        public IEnumerable<ItemDTO> GetAllItems()
         {
+            var items = new List<ItemDTO>();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                string sql = "SELECT ItemId, Name, Identifier, Favorite, Description, Image FROM Items";
+                using (var command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            items.Add(new ItemDTO
+                            {
+                                ItemId = reader.GetInt32(reader.GetOrdinal("ItemId")),
+                                Name = reader.GetString(reader.GetOrdinal("Name")),
+                                Identifier = reader.IsDBNull(reader.GetOrdinal("Identifier")) ? null : reader.GetString(reader.GetOrdinal("Identifier")),
+                                Favorite = reader.GetBoolean(reader.GetOrdinal("Favorite")),
+                                Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
+                                Image = reader.IsDBNull(reader.GetOrdinal("Image")) ? null : (byte[])reader["Image"]
+                            });
+                        }
+                    }
+                }
+            }
+            return items;
         }
 
-        public IEnumerable<ItemDTO> GetAllItems()
+        public ItemDTO GetItemById(int itemId)
         {
         }
 

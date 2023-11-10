@@ -68,9 +68,23 @@ namespace Furnivault.Data.Repositories
             }
             return null;
         }
-
         public void AddItem(ItemDTO item)
         {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                string sql = "INSERT INTO Items (Name, Identifier, Favorite, Description, Image) VALUES (@Name, @Identifier, @Favorite, @Description, @Image)";
+                using (var command = new SqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@Name", item.Name);
+                    command.Parameters.AddWithValue("@Identifier", item.Identifier ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@Favorite", item.Favorite);
+                    command.Parameters.AddWithValue("@Description", item.Description ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@Image", item.Image ?? (object)DBNull.Value);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public void UpdateItem(ItemDTO item)

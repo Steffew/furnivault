@@ -40,6 +40,7 @@ namespace Furnivault.Data.Repositories
             }
             return items;
         }
+
         public ItemDTO GetItemById(int itemId)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -68,6 +69,7 @@ namespace Furnivault.Data.Repositories
             }
             return null;
         }
+
         public void AddItem(ItemDTO item)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -106,9 +108,19 @@ namespace Furnivault.Data.Repositories
                 }
             }
         }
-
         public void DeleteItem(int itemId)
         {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                string sql = "DELETE FROM Items WHERE ItemId = @ItemId";
+                using (var command = new SqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@ItemId", itemId);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

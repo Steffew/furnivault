@@ -1,20 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Furnivault.Data.DTOs;
+using Furnivault.Data.Repositories;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Furnivault.Pages
+public class IndexModel : PageModel
 {
-    public class IndexModel : PageModel
+    private readonly IItemRepository _itemRepository;
+    public List<ItemDTO> Items { get; private set; }
+
+    public IndexModel(IItemRepository itemRepository)
     {
-        private readonly ILogger<IndexModel> _logger;
+        _itemRepository = itemRepository;
+    }
 
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
-
-        public void OnGet()
-        {
-
-        }
+    public void OnGet()
+    {
+        Items = _itemRepository.GetAllItems().ToList();
     }
 }

@@ -5,5 +5,35 @@
 }
 
 <div class="text-center">
-    <p class="text-muted">Nothing here yet...</p>
+    <h1 class="display-4">Welcome to Furnivault</h1>
+    @if (Model.Items.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Identifier</th>
+                    <th>Favorite</th>
+                    <th>Description</th>
+                    <!-- Add other headers if needed -->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Identifier</td>
+                        <td>@item.Favorite</td>
+                        <td>@item.Description</td>
+                        <!-- Add other item details if needed -->
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="text-muted">No items found.</p>
+    }
 </div>

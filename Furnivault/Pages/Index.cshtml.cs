@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 public class IndexModel : PageModel
 {
-    private readonly IItemRepository _itemRepository;
+    private readonly IItemRepository _itemRepository; // todo: move to core layer
     public List<ItemDTO> Items { get; private set; }
 
-    public IndexModel(IItemRepository itemRepository)
+    public IndexModel(IItemRepository itemRepository) // todo: move to core layer
     {
         _itemRepository = itemRepository;
     }

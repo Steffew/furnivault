@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddScoped<IItemRepository, ItemRepository>(repo => new ItemRepository(connectionString));
+builder.Services.AddScoped<IItemRepository, ItemRepository>(_ => new ItemRepository(connectionString));
 
 var app = builder.Build();
 

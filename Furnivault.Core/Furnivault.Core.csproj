@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Furnivault.Data\Furnivault.Data.csproj" />
+    <ProjectReference Include="..\Furnivault\Furnivault.csproj" />
   </ItemGroup>
 
 

@@ -1,9 +1,10 @@
-﻿using Furnivault.Data.DTOs;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
+using Furnivault.Core.Interfaces;
+using Furnivault.Data.DTOs;
 
 namespace Furnivault.Data.Repositories
 {
-    public class ItemRepository : IItemRepository
+    public class ItemRepository : IRepository<ItemDTO>
     {
         private readonly string _connectionString;
 
@@ -12,7 +13,7 @@ namespace Furnivault.Data.Repositories
             _connectionString = connectionString;
         }
 
-        public IEnumerable<ItemDTO> GetAllItems()
+        public IEnumerable<ItemDTO> GetAll()
         {
             var items = new List<ItemDTO>();
             using SqlConnection connection = new(_connectionString);
@@ -38,7 +39,7 @@ namespace Furnivault.Data.Repositories
             return items;
         }
 
-        public ItemDTO GetItemById(int itemId)
+        public ItemDTO GetById(int itemId)
         {
             using var connection = new SqlConnection(_connectionString);
             string sql = "SELECT ItemId, Name, Identifier, Favorite, Description, Image FROM Items WHERE ItemId = @ItemId";
@@ -62,7 +63,7 @@ namespace Furnivault.Data.Repositories
             return null;
         }
 
-        public void AddItem(ItemDTO item)
+        public void Add(ItemDTO item)
         {
             using var connection = new SqlConnection(_connectionString);
             string sql = "INSERT INTO Items (Name, Identifier, Description) VALUES (@Name, @Identifier, @Description)";
@@ -78,7 +79,7 @@ namespace Furnivault.Data.Repositories
             command.ExecuteNonQuery();
         }
 
-        public void UpdateItem(ItemDTO item)
+        public void Update(ItemDTO item)
         {
             using var connection = new SqlConnection(_connectionString);
             string sql = "UPDATE Items SET Name = @Name, Identifier = @Identifier, Favorite = @Favorite, Description = @Description, Image = @Image WHERE ItemId = @ItemId";
@@ -95,7 +96,7 @@ namespace Furnivault.Data.Repositories
             command.ExecuteNonQuery();
         }
 
-        public void DeleteItem(int itemId)
+        public void Delete(int itemId)
         {
             using var connection = new SqlConnection(_connectionString);
             string sql = "DELETE FROM Items WHERE ItemId = @ItemId";

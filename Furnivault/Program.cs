@@ -1,3 +1,5 @@
+using Furnivault.Core.Interfaces;
+using Furnivault.Data.DTOs;
 using Furnivault.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddScoped<IItemRepository, ItemRepository>(_ => new ItemRepository(connectionString));
+builder.Services.AddScoped<IRepository<ItemDTO>, ItemRepository>(_ => new ItemRepository(connectionString));
 
 var app = builder.Build();
 

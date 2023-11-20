@@ -1,8 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Furnivault.Data.DTOs;
-using Furnivault.Data.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using Furnivault.Core.Interfaces;
+using Furnivault.Data.DTOs;
 
 namespace Furnivault.Pages
 {

@@ -1,6 +1,6 @@
 using Furnivault.Core.Interfaces;
-using Furnivault.Data.DTOs;
 using Furnivault.Data.Repositories;
+using Furnivault.Data.DTOs;
 
 var builder = WebApplication.CreateBuilder(args);
 

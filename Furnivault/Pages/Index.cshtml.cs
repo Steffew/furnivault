@@ -1,7 +1,6 @@
-﻿using Furnivault.Core.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Furnivault.Core.Interfaces;
 using Furnivault.Data.DTOs;
-using Furnivault.Data.Repositories;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 public class IndexModel : PageModel
 {

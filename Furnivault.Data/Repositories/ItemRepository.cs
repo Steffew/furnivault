@@ -85,7 +85,6 @@ namespace Furnivault.Data.Repositories
             string sql = "UPDATE Items SET Name = @Name, Identifier = @Identifier, Favorite = @Favorite, Description = @Description, Image = @Image WHERE ItemId = @ItemId";
             using var command = new SqlCommand(sql, connection);
 
-            command.Parameters.AddWithValue("@ItemId", item.ItemId);
             command.Parameters.AddWithValue("@Name", item.Name);
             command.Parameters.AddWithValue("@Identifier", item.Identifier ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@Favorite", item.Favorite);

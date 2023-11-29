@@ -1,0 +1,26 @@
+﻿@page "{id:int}"
+@model Furnivault.Pages.EditItemModel
+@{
+    ViewData["Title"] = "Edit Item";
+}
+
+<div class="container mt-3">
+    <h2>Edit Item</h2>
+    <form method="post">
+        <input type="hidden" asp-for="Item.ItemId" />
+        <div class="mb-3">
+            <label asp-for="Item.Name" class="form-label"></label>
+            <input asp-for="Item.Name" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Item.Identifier" class="form-label"></label>
+            <input asp-for="Item.Identifier" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Item.Description" class="form-label"></label>
+            <textarea asp-for="Item.Description" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="submit" asp-page-handler="Delete" asp-route-id="@Model.Item.ItemId" class="btn btn-danger">Delete</button>
+    </form>
+</div>

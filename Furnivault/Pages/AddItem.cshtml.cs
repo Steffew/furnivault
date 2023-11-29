@@ -7,9 +7,9 @@ namespace Furnivault.Pages
 {
     public class AddItemViewModel
     {
-        public string ItemIdentifier { get; set; }
-        public string ItemName { get; set; }
-        public string ItemDescription { get; set; }
+        public string Identifier { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
 
     public class AddItemModel : PageModel
@@ -37,9 +37,9 @@ namespace Furnivault.Pages
 
             var itemDto = new ItemDTO
             {
-                Name = Item.ItemName,
-                Identifier = Item.ItemIdentifier,
-                Description = Item.ItemDescription,
+                Name = Item.Name,
+                Identifier = Item.Identifier,
+                Description = Item.Description,
             };
 
             _itemRepository.Add(itemDto);

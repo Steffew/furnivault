@@ -25,5 +25,10 @@
             </div>
         </div>
         }
+        @if (Model.Items.Count == 0)
+		{
+            <span class="icon huge material-symbols-rounded text-muted text-center mt-5"> sentiment_stressed </span>
+            <p class="text-muted text-center mt-2">There are no items in your vault!</p>
+        }
     </div>
 </div>

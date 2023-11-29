@@ -4,23 +4,39 @@
     ViewData["Title"] = "Edit Item";
 }
 
-<div class="container mt-3">
-    <h2>Edit Item</h2>
+<div class="container mt-5">
     <form method="post">
-        <input type="hidden" asp-for="Item.ItemId" />
-        <div class="mb-3">
-            <label asp-for="Item.Name" class="form-label"></label>
-            <input asp-for="Item.Name" class="form-control" />
+        <div class="row">
+            <div class="col-5 text-end">
+                Item name
+            </div>
+            <div class="col-5">
+                <input class="item-manager-field form-control" asp-for="Item.Name" />
+            </div>
         </div>
-        <div class="mb-3">
-            <label asp-for="Item.Identifier" class="form-label"></label>
-            <input asp-for="Item.Identifier" class="form-control" />
+        <div class="row mt-3">
+            <div class="col-5 text-end">
+                Item identifier
+            </div>
+            <div class="col-5">
+                <input class="item-manager-field form-control" asp-for="Item.Identifier" />
+            </div>
         </div>
-        <div class="mb-3">
-            <label asp-for="Item.Description" class="form-label"></label>
-            <textarea asp-for="Item.Description" class="form-control"></textarea>
+        <div class="row mt-3">
+            <div class="col-5 text-end">
+                Item description
+            </div>
+            <div class="col-5">
+                <textarea class="item-manager-field form-control" asp-for="Item.Description" rows="3"></textarea>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Update</button>
-        <button type="submit" asp-page-handler="Delete" asp-route-id="@Model.Item.ItemId" class="btn btn-danger">Delete</button>
+        <div class="row mt-3">
+            <div class="col-5 text-end">
+                <button type="submit" asp-page-handler="Delete" asp-route-id="@Model.Item.ItemId" class="button btn">Delete</button>
+            </div>
+            <div class="col-6">
+                <button type="submit" asp-page-handler="Update" asp-route-id="@Model.Item.ItemId" class="button btn">Update</button>
+            </div>
+        </div>
     </form>
 </div>

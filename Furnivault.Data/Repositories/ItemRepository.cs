@@ -18,7 +18,7 @@ namespace Furnivault.Data.Repositories
             var items = new List<ItemDTO>();
             using SqlConnection connection = new(_connectionString);
 
-            string sql = "SELECT ItemId, Name, Identifier, Favorite, Description, Image FROM Items";
+            string sql = "SELECT ItemId, Name, Identifier, Favorite, Description FROM Items";
             using var command = new SqlCommand(sql, connection);
             connection.Open();
             using var reader = command.ExecuteReader();
@@ -32,7 +32,6 @@ namespace Furnivault.Data.Repositories
                     Identifier = reader.IsDBNull(reader.GetOrdinal("Identifier")) ? null : reader.GetString(reader.GetOrdinal("Identifier")),
                     Favorite = reader.GetBoolean(reader.GetOrdinal("Favorite")),
                     Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
-                    Image = reader.IsDBNull(reader.GetOrdinal("Image")) ? null : (byte[])reader["Image"]
                 });
             }
 
@@ -42,7 +41,7 @@ namespace Furnivault.Data.Repositories
         public ItemDTO GetById(int itemId)
         {
             using var connection = new SqlConnection(_connectionString);
-            string sql = "SELECT ItemId, Name, Identifier, Favorite, Description, Image FROM Items WHERE ItemId = @ItemId";
+            string sql = "SELECT ItemId, Name, Identifier, Favorite, Description FROM Items WHERE ItemId = @ItemId";
             using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@ItemId", itemId);
             connection.Open();
@@ -57,7 +56,6 @@ namespace Furnivault.Data.Repositories
                     Identifier = reader.IsDBNull(reader.GetOrdinal("Identifier")) ? null : reader.GetString(reader.GetOrdinal("Identifier")),
                     Favorite = reader.GetBoolean(reader.GetOrdinal("Favorite")),
                     Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
-                    Image = reader.IsDBNull(reader.GetOrdinal("Image")) ? null : (byte[])reader["Image"]
                 };
             }
             return null;
@@ -73,7 +71,6 @@ namespace Furnivault.Data.Repositories
             command.Parameters.AddWithValue("@Identifier", item.Identifier ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@Description", item.Description ?? (object)DBNull.Value);
             //command.Parameters.AddWithValue("@Favorite", item.Favorite);
-            //command.Parameters.AddWithValue("@Image", item.Image ?? (object)DBNull.Value);
 
             connection.Open();
             command.ExecuteNonQuery();
@@ -90,7 +87,6 @@ namespace Furnivault.Data.Repositories
             command.Parameters.AddWithValue("@Identifier", item.Identifier ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@Description", item.Description ?? (object)DBNull.Value);
             //command.Parameters.AddWithValue("@Favorite", item.Favorite);
-            //command.Parameters.AddWithValue("@Image", item.Image ?? (object)DBNull.Value);
 
             connection.Open();
             command.ExecuteNonQuery();

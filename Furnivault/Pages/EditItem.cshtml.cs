@@ -7,9 +7,10 @@ namespace Furnivault.Pages
 {
     public class EditItemViewModel
     {
-        public string ItemIdentifier { get; set; }
-        public string ItemName { get; set; }
-        public string ItemDescription { get; set; }
+        public int ItemId { get; set; }
+        public string Name { get; set; }
+        public string Identifier { get; set; }
+        public string Description { get; set; }
     }
 
     public class EditItemModel : PageModel
@@ -17,17 +18,27 @@ namespace Furnivault.Pages
         private readonly IRepository<Item> _itemRepository;
 
         [BindProperty]
-        public Item Item { get; set; }
-
-        public EditItemModel(IRepository<Item> itemRepository)
-        {
-            _itemRepository = itemRepository;
-        }
+        public EditItemViewModel ItemViewModel { get; set; }
 
         public void OnGet(int id)
         {
-            Item = _itemRepository.GetById(id);
+            var item = _itemRepository.GetById(id);
+            if (item != null)
+            {
+                ItemViewModel = new EditItemViewModel
+                {
+                    ItemId = item.ItemId,
+                    Name = item.Name,
+                    Identifier = item.Identifier,
+                    Description = item.Description
+                };
+            }
+            else
+            {
+                //todo: Exception if item is null
+            }
         }
+
 
         public IActionResult OnPost()
         {
@@ -36,14 +47,19 @@ namespace Furnivault.Pages
                 return Page();
             }
 
-            _itemRepository.Update(Item);
-            return RedirectToPage("Index");
+            var existingItem = _itemRepository.GetById(ItemViewModel.ItemId);
+            if (existingItem != null)
+            {
+                existingItem.Update(ItemViewModel.Name, ItemViewModel.Identifier, ItemViewModel.Description);
+                _itemRepository.Update(existingItem);
+                return RedirectToPage("Index");
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
-        public IActionResult OnPostDelete(int id)
-        {
-            _itemRepository.Delete(id);
-            return RedirectToPage("Index");
-        }
+
     }
 }

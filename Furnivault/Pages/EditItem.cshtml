@@ -11,7 +11,7 @@
                 Item name
             </div>
             <div class="col-5">
-                <input class="item-manager-field form-control" asp-for="Item.Name" />
+                <input class="item-manager-field form-control" asp-for="ItemViewModel.Name" />
             </div>
         </div>
         <div class="row mt-3">
@@ -19,7 +19,7 @@
                 Item identifier
             </div>
             <div class="col-5">
-                <input class="item-manager-field form-control" asp-for="Item.Identifier" />
+                <input class="item-manager-field form-control" asp-for="ItemViewModel.Identifier" />
             </div>
         </div>
         <div class="row mt-3">
@@ -27,12 +27,12 @@
                 Item description
             </div>
             <div class="col-5">
-                <textarea class="item-manager-field form-control" asp-for="Item.Description" rows="3"></textarea>
+                <textarea class="item-manager-field form-control" asp-for="ItemViewModel.Description" rows="3"></textarea>
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-2 text-end">
-                <button asp-page-handler="Delete" asp-route-id="@Model.Item.ItemId" class="danger button btn"><span class="icon material-symbols-rounded me-1"> delete_forever </span>Delete</button>
+                <button asp-page-handler="Delete" asp-route-id="@Model.ItemViewModel.ItemId" class="danger button btn"><span class="icon material-symbols-rounded me-1"> delete_forever </span>Delete</button>
             </div>
             <div class="col-3 text-end">
                 <a class="button btn" asp-area="" asp-page="/Index"><span class="icon material-symbols-rounded me-1"> arrow_back </span>Cancel</a>

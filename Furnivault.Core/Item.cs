@@ -10,24 +10,28 @@
 
         public Item(string name, string identifier, string description)
         {
-            SetProperties(name, identifier, description);
+            ValidateProperty(name, nameof(Name));
+            ValidateProperty(identifier, nameof(Identifier));
+            ValidateProperty(description, nameof(Description));
+
+            Name = name;
+            Identifier = identifier;
+            Description = description;
+        }
+
+        private void ValidateProperty(string value, string propertyName)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                throw new ArgumentException($"{propertyName} cannot be empty or whitespace.", propertyName);
+            }
         }
 
         public void Update(string name, string identifier, string description)
         {
-            SetProperties(name, identifier, description);
-        }
-
-        private void SetProperties(string name, string identifier, string description)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentException("Name cannot be empty!", nameof(name));
-
-            if (string.IsNullOrWhiteSpace(identifier))
-                throw new ArgumentException("Identifier cannot be empty!", nameof(identifier));
-
-            if (string.IsNullOrWhiteSpace(description))
-                throw new ArgumentException("Description cannot be empty!", nameof(description));
+            ValidateProperty(name, nameof(Name));
+            ValidateProperty(identifier, nameof(Identifier));
+            ValidateProperty(description, nameof(Description));
 
             Name = name;
             Identifier = identifier;

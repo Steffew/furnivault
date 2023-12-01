@@ -4,18 +4,16 @@ using Furnivault.Core.Entities;
 
 public class IndexModel : PageModel
 {
-    private readonly IRepository<Item> _ItemRepository;
-    private ItemCollection _ItemCollection;
+    private readonly IRepository<Item> _itemRepository;
     public List<Item> Items { get; private set; }
 
     public IndexModel(IRepository<Item> itemRepository)
     {
-        _ItemRepository = itemRepository;
-        _ItemCollection = new ItemCollection(_ItemRepository);
+        _itemRepository = itemRepository;
     }
 
     public void OnGet()
     {
-        Items = _ItemCollection.GetAll();
+        Items = _itemRepository.GetAll().ToList();
     }
 }

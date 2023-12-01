@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc;
 using Furnivault.Core.Interfaces;
-using Furnivault.Data.DTOs;
+using Furnivault.Core.Entities;
 
 namespace Furnivault.Pages
 {
@@ -14,12 +14,12 @@ namespace Furnivault.Pages
 
     public class EditItemModel : PageModel
     {
-        private readonly IRepository<ItemDTO> _itemRepository;
+        private readonly IRepository<Item> _itemRepository;
 
         [BindProperty]
-        public ItemDTO Item { get; set; }
+        public Item Item { get; set; }
 
-        public EditItemModel(IRepository<ItemDTO> itemRepository)
+        public EditItemModel(IRepository<Item> itemRepository)
         {
             _itemRepository = itemRepository;
         }

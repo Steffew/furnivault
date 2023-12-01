@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc;
 using Furnivault.Core.Interfaces;
-using Furnivault.Data.DTOs;
+using Furnivault.Core.Entities;
 
 namespace Furnivault.Pages
 {
@@ -14,14 +14,16 @@ namespace Furnivault.Pages
 
     public class AddItemModel : PageModel
     {
-        private readonly IRepository<ItemDTO> _itemRepository;
+        private readonly IRepository<Item> _itemRepository;
+        private readonly ItemService _itemService;
 
         [BindProperty]
         public AddItemViewModel Item { get; set; }
 
-        public AddItemModel(IRepository<ItemDTO> itemRepository)
+        public AddItemModel(IRepository<Item> itemRepository, ItemService itemService)
         {
             _itemRepository = itemRepository;
+            _itemService = itemService;
         }
 
         public void OnGet()
@@ -35,16 +37,10 @@ namespace Furnivault.Pages
                 return Page();
             }
 
-            var itemDto = new ItemDTO
-            {
-                Name = Item.Name,
-                Identifier = Item.Identifier,
-                Description = Item.Description,
-            };
-
-            _itemRepository.Add(itemDto);
+            var newItem = _itemService.Add(Item.Name, Item.Identifier, Item.Description);
 
             return RedirectToPage("./Index");
         }
+
     }
 }

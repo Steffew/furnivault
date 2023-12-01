@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Furnivault.Core.Interfaces;
-using Furnivault.Data.DTOs;
+using Furnivault.Core.Entities;
 
 public class ItemCollection
 {
-    private IRepository<ItemDTO> _itemRepository;
-    public List<ItemDTO> Items { get; private set; }
+    private IRepository<Item> _itemRepository;
+    public List<Item> Items { get; private set; }
 
-    public ItemCollection(IRepository<ItemDTO> repository)
+    public ItemCollection(IRepository<Item> repository)
     {
         _itemRepository = repository;
     }
 
-    public List<ItemDTO> GetAll()
+    public List<Item> GetAll()
     {
         return Items = _itemRepository.GetAll().ToList();
     }

@@ -13,7 +13,7 @@
             SetProperties(name, identifier, description);
         }
 
-        public void UpdateItem(string name, string identifier, string description)
+        public void Update(string name, string identifier, string description)
         {
             SetProperties(name, identifier, description);
         }

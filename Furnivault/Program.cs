@@ -8,7 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddScoped<IRepository<Item>, ItemRepository>(_ => new ItemRepository(connectionString));
+
+// Register the repository and pass the connection string to its constructor.
+builder.Services.AddScoped<IRepository<Item>, ItemRepository>(serviceProvider =>
+    new ItemRepository(connectionString));
+
+// Register the service.
 builder.Services.AddScoped<ItemService>();
 
 var app = builder.Build();

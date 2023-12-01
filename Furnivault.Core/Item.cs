@@ -8,7 +8,7 @@
         public bool Favorite { get; private set; }
         public string Description { get; private set; }
 
-        public Item(string name, string identifier, string description)
+        public Item(string name, string identifier, string description, bool favorite = false)
         {
             ValidateProperty(name, nameof(Name));
             ValidateProperty(identifier, nameof(Identifier));
@@ -17,6 +17,7 @@
             Name = name;
             Identifier = identifier;
             Description = description;
+            Favorite = favorite;
         }
 
         private void ValidateProperty(string value, string propertyName)
@@ -41,6 +42,11 @@
         public void ToggleFavorite()
         {
             Favorite = !Favorite;
+        }
+
+        public void SetItemId(int id)
+        {
+            ItemId = id;
         }
     }
 }

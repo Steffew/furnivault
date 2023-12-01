@@ -40,7 +40,7 @@ namespace Furnivault.Data.Repositories
         public Item GetById(int itemId)
         {
             using var connection = new SqlConnection(_connectionString);
-            const string sql = "SELECT ItemId, Name, Identifier, Favorite, Description FROM Items WHERE ItemId = @ItemId";
+            string sql = "SELECT ItemId, Name, Identifier, Favorite, Description FROM Items WHERE ItemId = @ItemId";
             using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@ItemId", itemId);
             connection.Open();
@@ -48,12 +48,14 @@ namespace Furnivault.Data.Repositories
 
             if (reader.Read())
             {
-                return new Item(
+                var item = new Item(
                     reader.GetString(reader.GetOrdinal("Name")),
-                    reader.GetString(reader.GetOrdinal("Identifier")),
+                    reader.IsDBNull(reader.GetOrdinal("Identifier")) ? null : reader.GetString(reader.GetOrdinal("Identifier")),
                     reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
                     reader.GetBoolean(reader.GetOrdinal("Favorite"))
                 );
+                item.SetItemId(reader.GetInt32(reader.GetOrdinal("ItemId")));
+                return item;
             }
             return null;
         }

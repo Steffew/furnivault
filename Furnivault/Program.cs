@@ -10,8 +10,7 @@ builder.Services.AddRazorPages();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Register the repository and pass the connection string to its constructor.
-builder.Services.AddScoped<IRepository<Item>, ItemRepository>(serviceProvider =>
-    new ItemRepository(connectionString));
+builder.Services.AddScoped<IRepository<Item>, ItemRepository>();
 
 // Register the service.
 builder.Services.AddScoped<ItemService>();

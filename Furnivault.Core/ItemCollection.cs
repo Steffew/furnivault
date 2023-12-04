@@ -8,7 +8,9 @@ using Furnivault.Core.Entities;
 
 public class ItemCollection
 {
+    //todo: refactor or delete this
     private IRepository<Item> _itemRepository;
+
     public List<Item> Items { get; private set; }
 
     public ItemCollection(IRepository<Item> repository)

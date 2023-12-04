@@ -20,10 +20,10 @@ namespace Furnivault.Pages
         [BindProperty]
         public AddItemViewModel Item { get; set; }
 
-        public AddItemModel(IRepository<Item> itemRepository, ItemService itemService)
+        public AddItemModel(IRepository<Item> repo)
         {
-            _itemRepository = itemRepository;
-            _itemService = itemService;
+            _itemRepository = repo;
+            _itemService = new ItemService(repo)
         }
 
         public void OnGet()
@@ -41,6 +41,5 @@ namespace Furnivault.Pages
 
             return RedirectToPage("./Index");
         }
-
     }
 }

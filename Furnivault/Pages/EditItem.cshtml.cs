@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc;
 using Furnivault.Core.Interfaces;
 using Furnivault.Core.Entities;
+using Furnivault.Data.Repositories;
 
 namespace Furnivault.Pages
 {
@@ -16,13 +17,21 @@ namespace Furnivault.Pages
     public class EditItemModel : PageModel
     {
         private readonly IRepository<Item> _itemRepository;
+        private Item item;
+        private ItemService itemService;
 
         [BindProperty]
         public EditItemViewModel ItemViewModel { get; set; }
 
+        public EditItemModel(IRepository<Item> repo)
+        {
+            _itemRepository = repo;
+            itemService = new ItemService(repo);
+        }
+
         public void OnGet(int id)
         {
-            var item = _itemRepository.GetById(id);
+            var item = itemService.GetById(id);
             if (item != null)
             {
                 ItemViewModel = new EditItemViewModel
@@ -39,7 +48,6 @@ namespace Furnivault.Pages
             }
         }
 
-
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
@@ -47,11 +55,11 @@ namespace Furnivault.Pages
                 return Page();
             }
 
-            var existingItem = _itemRepository.GetById(ItemViewModel.ItemId);
+            var existingItem = itemService.GetById(ItemViewModel.ItemId);
             if (existingItem != null)
             {
                 existingItem.Update(ItemViewModel.Name, ItemViewModel.Identifier, ItemViewModel.Description);
-                _itemRepository.Update(existingItem);
+                itemService.Update(existingItem);
                 return RedirectToPage("Index");
             }
             else
@@ -60,6 +68,10 @@ namespace Furnivault.Pages
             }
         }
 
-
+        public IActionResult OnPostDelete(int id)
+        {
+            itemService.Delete(id);
+            return RedirectToPage("Index");
+        }
     }
 }

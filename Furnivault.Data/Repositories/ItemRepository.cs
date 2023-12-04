@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using Furnivault.Core.Interfaces;
 using Furnivault.Core.Entities;
+using Microsoft.Extensions.Configuration;
 
 namespace Furnivault.Data.Repositories
 {
@@ -9,9 +10,9 @@ namespace Furnivault.Data.Repositories
     {
         private readonly string _connectionString;
 
-        public ItemRepository(string connectionString)
+        public ItemRepository(IConfiguration config)
         {
-            _connectionString = connectionString;
+            _connectionString = config.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException("Connectionstring is null");
         }
 
         public IEnumerable<Item> GetAll()
@@ -31,6 +32,7 @@ namespace Furnivault.Data.Repositories
                     reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
                     reader.GetBoolean(reader.GetOrdinal("Favorite"))
                 );
+                item.SetItemId(reader.GetInt32(reader.GetOrdinal("ItemId")));
                 items.Add(item);
             }
 
@@ -75,7 +77,6 @@ namespace Furnivault.Data.Repositories
             var newId = (int)command.ExecuteScalar();
             item.SetItemId(newId);
         }
-
 
         public void Update(Item item)
         {

@@ -23,7 +23,7 @@ namespace Furnivault.Pages
         public AddItemModel(IRepository<Item> repo)
         {
             _itemRepository = repo;
-            _itemService = new ItemService(repo)
+            _itemService = new ItemService(repo);
         }
 
         public void OnGet()

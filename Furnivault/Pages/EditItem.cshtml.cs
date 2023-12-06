@@ -16,7 +16,6 @@ namespace Furnivault.Pages
 
     public class EditItemModel : PageModel
     {
-        private readonly IRepository<Item> _itemRepository;
         private Item item;
         private ItemService _itemService;
 
@@ -25,7 +24,6 @@ namespace Furnivault.Pages
 
         public EditItemModel(IRepository<Item> repo)
         {
-            _itemRepository = repo;
             _itemService = new ItemService(repo);
         }
 

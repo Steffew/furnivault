@@ -1,6 +1,6 @@
 namespace Furnivault.Tests
 {
-    public class UnitTest1
+    public class Items
     {
         [Fact]
         public void Get_all_items()

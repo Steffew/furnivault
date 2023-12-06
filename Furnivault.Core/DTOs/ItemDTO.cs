@@ -1,6 +1,6 @@
 ﻿namespace Furnivault.Data.DTOs
 {
-    public class ItemDTO
+    public class ItemDTO //todo: refactor (in repo) or delete
     {
         public string Name { get; set; }
         public int ItemId { get; set; }

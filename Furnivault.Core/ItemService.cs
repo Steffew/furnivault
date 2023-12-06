@@ -5,6 +5,11 @@ public class ItemService
 {
     private readonly IRepository<Item> _itemRepository;
 
+    public IEnumerable<Item> GetAll()
+    {
+        return _itemRepository.GetAll();
+    }
+
     public ItemService(IRepository<Item> itemRepository)
     {
         _itemRepository = itemRepository;

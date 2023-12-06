@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Furnivault.Core\Furnivault.Core.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -41,9 +41,9 @@ namespace Furnivault.Pages
 
             try
             {
-                _itemValidator.ValidateString("Item name", Item.Name, 3, 20);
-                _itemValidator.ValidateString("Item identifier", Item.Identifier, 3, 20);
-                _itemValidator.ValidateString("Item description", Item.Description, 5, 20);
+                _itemValidator.ValidateString("Item name", Item.Name, 2, 32);
+                _itemValidator.ValidateString("Item identifier", Item.Identifier, 2, 32);
+                _itemValidator.ValidateString("Item description", Item.Description, 4, 64);
             }
             catch (Exception ex)
             {

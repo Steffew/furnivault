@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc;
 using Furnivault.Core.Interfaces;
 using Furnivault.Core.Entities;
+using Furnivault.Core.Validators;
 
 namespace Furnivault.Pages
 {
@@ -15,12 +16,15 @@ namespace Furnivault.Pages
     public class AddItemModel : PageModel
     {
         private readonly ItemService _itemService;
+        private readonly ItemValidator _itemValidator;
+        public string ErrorMessage { get; set; }
 
         [BindProperty]
         public AddItemViewModel Item { get; set; }
 
         public AddItemModel(IRepository<Item> repo)
         {
+            _itemValidator = new ItemValidator();
             _itemService = new ItemService(repo);
         }
 
@@ -32,6 +36,18 @@ namespace Furnivault.Pages
         {
             if (!ModelState.IsValid)
             {
+                return Page();
+            }
+
+            try
+            {
+                _itemValidator.ValidateString("Item name", Item.Name, 3, 20);
+                _itemValidator.ValidateString("Item identifier", Item.Identifier, 3, 20);
+                _itemValidator.ValidateString("Item description", Item.Description, 5, 20);
+            }
+            catch (Exception ex)
+            {
+                ViewData["ErrorMessage"] = $"{ex.Message}";
                 return Page();
             }
 

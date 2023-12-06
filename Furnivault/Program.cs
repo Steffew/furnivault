@@ -1,5 +1,5 @@
-using Furnivault.Core.Interfaces;
 using Furnivault.Core.Entities;
+using Furnivault.Core.Interfaces;
 using Furnivault.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);

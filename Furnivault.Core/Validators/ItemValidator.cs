@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Furnivault.Core.Validators
+﻿namespace Furnivault.Core.Validators
 {
     public class ItemValidator
     {

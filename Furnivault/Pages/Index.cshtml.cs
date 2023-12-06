@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Furnivault.Core.Entities;
 using Furnivault.Core.Interfaces;
-using Furnivault.Core.Entities;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 public class IndexModel : PageModel
 {

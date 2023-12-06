@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
-using Furnivault.Core.Entities;
-using Furnivault.Core.Interfaces;
+﻿using Furnivault.Core.Interfaces;
 
 namespace Furnivault.Tests
 {

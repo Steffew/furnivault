@@ -1,8 +1,7 @@
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc;
-using Furnivault.Core.Interfaces;
 using Furnivault.Core.Entities;
-using Furnivault.Data.Repositories;
+using Furnivault.Core.Interfaces;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Furnivault.Pages
 {

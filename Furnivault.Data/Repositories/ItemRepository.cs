@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Data.SqlClient;
-using Furnivault.Core.Interfaces;
+﻿using System.Data.SqlClient;
 using Furnivault.Core.Entities;
+using Furnivault.Core.Interfaces;
 using Microsoft.Extensions.Configuration;
 
 namespace Furnivault.Data.Repositories

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Furnivault.Data.MyFeature.Pages
 {
@@ -7,7 +6,6 @@ namespace Furnivault.Data.MyFeature.Pages
     {
         public void OnGet()
         {
-
         }
     }
 }

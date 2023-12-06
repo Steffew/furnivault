@@ -14,7 +14,6 @@ namespace Furnivault.Pages
 
     public class AddItemModel : PageModel
     {
-        private readonly IRepository<Item> _itemRepository;
         private readonly ItemService _itemService;
 
         [BindProperty]
@@ -22,7 +21,6 @@ namespace Furnivault.Pages
 
         public AddItemModel(IRepository<Item> repo)
         {
-            _itemRepository = repo;
             _itemService = new ItemService(repo);
         }
 

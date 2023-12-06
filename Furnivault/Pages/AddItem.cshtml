@@ -5,6 +5,12 @@
 }
 
 <div class="container mt-5">
+    @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+    {
+        <div class="alert alert-danger">
+            @ViewData["ErrorMessage"]
+        </div>
+    }
     <form method="post">
         <div class="row">
             <div class="col-5 text-end">

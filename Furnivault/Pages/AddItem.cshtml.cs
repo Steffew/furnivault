@@ -15,7 +15,7 @@ namespace Furnivault.Pages
 
     public class AddItemModel : PageModel
     {
-        private readonly ItemService _itemService;
+        private readonly ItemCollection _itemService;
         private readonly ItemValidator _itemValidator;
         public string ErrorMessage { get; set; }
 
@@ -25,7 +25,7 @@ namespace Furnivault.Pages
         public AddItemModel(IRepository<Item> repo)
         {
             _itemValidator = new ItemValidator();
-            _itemService = new ItemService(repo);
+            _itemService = new ItemCollection(repo);
         }
 
         public void OnGet()

@@ -16,14 +16,14 @@ namespace Furnivault.Pages
     public class EditItemModel : PageModel
     {
         private Item item;
-        private ItemService _itemService;
+        private ItemCollection _itemService;
 
         [BindProperty]
         public EditItemViewModel ItemViewModel { get; set; }
 
         public EditItemModel(IRepository<Item> repo)
         {
-            _itemService = new ItemService(repo);
+            _itemService = new ItemCollection(repo);
         }
 
         public void OnGet(int id)

@@ -6,7 +6,7 @@ namespace Furnivault.Tests
         public void Get_all_items()
         {
             MockRepository mockRepository = new MockRepository();
-            ItemService itemService = new ItemService(mockRepository);
+            ItemCollection itemService = new ItemCollection(mockRepository);
 
             IEnumerable<Item> items = itemService.GetAll();
 
@@ -17,7 +17,7 @@ namespace Furnivault.Tests
         public void Get_item_by_id()
         {
             MockRepository mockRepository = new MockRepository();
-            ItemService itemService = new ItemService(mockRepository);
+            ItemCollection itemService = new ItemCollection(mockRepository);
 
             Item item = itemService.GetById(1);
 
@@ -28,7 +28,7 @@ namespace Furnivault.Tests
         public void Add_item()
         {
             MockRepository mockRepository = new MockRepository();
-            ItemService itemService = new ItemService(mockRepository);
+            ItemCollection itemService = new ItemCollection(mockRepository);
 
             Item item = itemService.Add("Item", "1", "Description");
 
@@ -41,7 +41,7 @@ namespace Furnivault.Tests
         public void Update_item()
         {
             MockRepository mockRepository = new MockRepository();
-            ItemService itemService = new ItemService(mockRepository);
+            ItemCollection itemService = new ItemCollection(mockRepository);
 
             itemService.Update(1, "newItem", "newIdentifier", "newDescription");
 

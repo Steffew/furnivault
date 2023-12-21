@@ -15,7 +15,7 @@ namespace Furnivault.Pages
 
     public class AddItemModel : PageModel
     {
-        private readonly ItemCollection _itemService;
+        private readonly ItemCollection _itemCollection;
         private readonly ItemValidator _itemValidator;
         public string ErrorMessage { get; set; }
 
@@ -25,7 +25,7 @@ namespace Furnivault.Pages
         public AddItemModel(IRepository<Item> repo)
         {
             _itemValidator = new ItemValidator();
-            _itemService = new ItemCollection(repo);
+            _itemCollection = new ItemCollection(repo);
         }
 
         public void OnGet()
@@ -51,7 +51,7 @@ namespace Furnivault.Pages
                 return Page();
             }
 
-            var newItem = _itemService.Add(Item.Name, Item.Identifier, Item.Description);
+            var newItem = _itemCollection.Add(Item.Name, Item.Identifier, Item.Description);
 
             return RedirectToPage("./Index");
         }

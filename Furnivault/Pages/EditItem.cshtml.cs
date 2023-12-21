@@ -16,19 +16,19 @@ namespace Furnivault.Pages
     public class EditItemModel : PageModel
     {
         private Item item;
-        private ItemCollection _itemService;
+        private ItemCollection _itemCollection;
 
         [BindProperty]
         public EditItemViewModel ItemViewModel { get; set; }
 
         public EditItemModel(IRepository<Item> repo)
         {
-            _itemService = new ItemCollection(repo);
+            _itemCollection = new ItemCollection(repo);
         }
 
         public void OnGet(int id)
         {
-            var item = _itemService.GetById(id);
+            var item = _itemCollection.GetById(id);
             if (item != null)
             {
                 ItemViewModel = new EditItemViewModel
@@ -52,11 +52,11 @@ namespace Furnivault.Pages
                 return Page();
             }
 
-            var existingItem = _itemService.GetById(ItemViewModel.ItemId);
+            var existingItem = _itemCollection.GetById(ItemViewModel.ItemId);
             if (existingItem != null)
             {
                 existingItem.Update(ItemViewModel.Name, ItemViewModel.Identifier, ItemViewModel.Description);
-                _itemService.Update(existingItem);
+                _itemCollection.Update(existingItem);
                 return RedirectToPage("Index");
             }
             else
@@ -67,7 +67,7 @@ namespace Furnivault.Pages
 
         public IActionResult OnPostDelete(int id)
         {
-            _itemService.Delete(id);
+            _itemCollection.Delete(id);
             return RedirectToPage("Index");
         }
     }

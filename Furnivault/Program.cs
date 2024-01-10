@@ -5,7 +5,7 @@ using Furnivault.Data.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddScoped<IRepository<Item>, ItemRepository>();
+builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddScoped<ItemCollection>();
 var app = builder.Build();
 

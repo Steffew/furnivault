@@ -3,14 +3,14 @@ using Furnivault.Core.Interfaces;
 
 public class ItemCollection
 {
-    private readonly IRepository<Item> _itemRepository;
+    private readonly IItemRepository _itemRepository;
 
     public IEnumerable<Item> GetAll()
     {
         return _itemRepository.GetAll();
     }
 
-    public ItemCollection(IRepository<Item> itemRepository)
+    public ItemCollection(IItemRepository itemRepository)
     {
         _itemRepository = itemRepository;
     }

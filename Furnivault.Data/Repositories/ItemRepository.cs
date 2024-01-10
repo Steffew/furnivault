@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Furnivault.Data.Repositories
 {
-    public class ItemRepository : IRepository<Item>
+    public class ItemRepository : IItemRepository
     {
         private readonly string _connectionString;
 

@@ -22,7 +22,7 @@ namespace Furnivault.Pages
         [BindProperty]
         public AddItemViewModel Item { get; set; }
 
-        public AddItemModel(IRepository<Item> repo)
+        public AddItemModel(IItemRepository repo)
         {
             _itemValidator = new ItemValidator();
             _itemCollection = new ItemCollection(repo);

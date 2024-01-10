@@ -4,11 +4,11 @@ using Furnivault.Core.Interfaces;
 public class ItemService
 {
     //todo: refactor or delete this
-    private IRepository<Item> _itemRepository;
+    private IItemRepository _itemRepository;
 
     public List<Item> Items { get; private set; }
 
-    public ItemService(IRepository<Item> repository)
+    public ItemService(IItemRepository repository)
     {
         _itemRepository = repository;
     }

@@ -2,7 +2,7 @@
 
 namespace Furnivault.Tests
 {
-    internal class MockRepository : IRepository<Item>
+    internal class MockRepository : IItemRepository
     {
         public string Name { get; set; }
         public string Identifier { get; set; }

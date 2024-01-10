@@ -7,7 +7,7 @@ public class IndexModel : PageModel
     public List<Item> Items { get; private set; }
     private readonly ItemCollection _itemCollection;
 
-    public IndexModel(IRepository<Item> repo)
+    public IndexModel(IItemRepository repo)
     {
         _itemCollection = new ItemCollection(repo);
     }

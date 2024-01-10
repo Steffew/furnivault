@@ -21,7 +21,7 @@ namespace Furnivault.Pages
         [BindProperty]
         public EditItemViewModel ItemViewModel { get; set; }
 
-        public EditItemModel(IRepository<Item> repo)
+        public EditItemModel(IItemRepository repo)
         {
             _itemCollection = new ItemCollection(repo);
         }

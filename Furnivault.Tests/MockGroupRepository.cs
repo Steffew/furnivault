@@ -10,7 +10,7 @@ namespace Furnivault.Tests
 
         public Group GetById(int Id)
         {
-            return new Group(Id, "Group");
+            return new Group("Group");
         }
 
         public IEnumerable<Group> GetAll()

@@ -6,9 +6,8 @@
         public string Name { get; private set; }
         public List<Item> Items { get; private set; }
 
-        public Group(int id, string name)
+        public Group(string name)
         {
-            Id = id;
             Name = name;
         }
 

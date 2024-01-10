@@ -8,9 +8,9 @@ namespace Furnivault.Core.Interfaces
 
         IEnumerable<Item> GetAll();
 
-        void Add(Item entity);
+        void Add(Item item);
 
-        void Update(Item entity);
+        void Update(Item item);
 
         void Delete(int id);
     }

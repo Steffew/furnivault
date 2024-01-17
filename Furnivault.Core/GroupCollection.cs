@@ -27,17 +27,6 @@ public class GroupCollection
         return group;
     }
 
-    public void Update(Group group, string newName)
-    {
-        if (group == null)
-        {
-            throw new KeyNotFoundException("Group is null!");
-        }
-
-        group.Update(newName);
-        _groupRepository.Update(group);
-    }
-
     public void Delete(int id)
     {
         _groupRepository.Delete(id);

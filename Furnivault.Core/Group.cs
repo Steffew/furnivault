@@ -1,7 +1,11 @@
-﻿namespace Furnivault.Core.Entities
+﻿using Furnivault.Core.Interfaces;
+
+namespace Furnivault.Core.Entities
 {
     public class Group
     {
+        private readonly IGroupRepository _groupRepository;
+
         public int Id { get; private set; }
         public string Name { get; private set; }
         public List<Item> Items { get; private set; }
@@ -14,6 +18,7 @@
         public void Update(string name)
         {
             Name = name;
+            _groupRepository.Update(this);
         }
 
         public void AddItem(Item item)

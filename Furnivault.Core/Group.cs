@@ -15,6 +15,11 @@ namespace Furnivault.Core.Entities
             Name = name;
         }
 
+        public void SetGroupId(int id)
+        {
+            Id = id;
+        }
+
         public void Update(string name)
         {
             Name = name;

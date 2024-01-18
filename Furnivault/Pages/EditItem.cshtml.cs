@@ -2,6 +2,7 @@ using Furnivault.Core.Entities;
 using Furnivault.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
 
 namespace Furnivault.Pages
 {
@@ -11,19 +12,24 @@ namespace Furnivault.Pages
         public string Name { get; set; }
         public string Identifier { get; set; }
         public string Description { get; set; }
+        public int SelectedGroupId { get; set; }
+        public List<Group> GroupList { get; set; }
     }
 
     public class EditItemModel : PageModel
     {
         private Item item;
         private ItemCollection _itemCollection;
+        private GroupCollection _groupCollection;
 
         [BindProperty]
         public EditItemViewModel ItemViewModel { get; set; }
+        public List<Group> GroupList { get; set; }
 
-        public EditItemModel(IItemRepository repo)
+        public EditItemModel(IItemRepository repo, IGroupRepository groupRepo)
         {
             _itemCollection = new ItemCollection(repo);
+            _groupCollection = new GroupCollection(groupRepo);
         }
 
         public void OnGet(int id)
@@ -41,8 +47,10 @@ namespace Furnivault.Pages
             }
             else
             {
-                //todo: Exception if item is null
+                // TODO: Exception if item is null
             }
+
+            GroupList = LoadGroupList();
         }
 
         public IActionResult OnPost()
@@ -56,6 +64,7 @@ namespace Furnivault.Pages
             if (existingItem != null)
             {
                 existingItem.Update(ItemViewModel.Name, ItemViewModel.Identifier, ItemViewModel.Description);
+                existingItem.SetGroupId(ItemViewModel.SelectedGroupId); // TODO: Implement SetGroupId method
                 _itemCollection.Update(existingItem);
                 return RedirectToPage("Index");
             }
@@ -69,6 +78,12 @@ namespace Furnivault.Pages
         {
             _itemCollection.Delete(id);
             return RedirectToPage("Index");
+        }
+
+        private List<Group> LoadGroupList()
+        {
+            var groups = _groupCollection.GetAll();
+            return groups.ToList();
         }
     }
 }

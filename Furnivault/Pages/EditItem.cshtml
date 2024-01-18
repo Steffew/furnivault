@@ -1,5 +1,7 @@
 ﻿@page "{id:int}"
 @model Furnivault.Pages.EditItemModel
+@using Furnivault.Pages
+@using Furnivault.Core.Entities
 @{
     ViewData["Title"] = "Edit Item";
 }
@@ -29,6 +31,16 @@
             </div>
             <div class="col-5">
                 <textarea class="item-manager-field form-control" asp-for="ItemViewModel.Description" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-5 text-end">
+                Group
+            </div>
+            <div class="col-5">
+                <select class="form-control" asp-for="ItemViewModel.SelectedGroupId" asp-items="new SelectList(Model.GroupList, nameof(Group.Id), nameof(Group.Name))">
+                    <option value="">Select a group</option>
+                </select>
             </div>
         </div>
         <div class="row mt-3">

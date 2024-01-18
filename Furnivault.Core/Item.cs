@@ -1,4 +1,6 @@
-﻿namespace Furnivault.Core.Entities
+﻿using System.Text.RegularExpressions;
+
+namespace Furnivault.Core.Entities
 {
     public class Item
     {
@@ -7,6 +9,7 @@
         public string Identifier { get; private set; }
         public bool Favorite { get; private set; }
         public string Description { get; private set; }
+        public int GroupId { get; private set; }
 
         public Item(string name, string identifier, string description, bool favorite = false)
         {
@@ -47,6 +50,10 @@
         public void SetItemId(int id)
         {
             ItemId = id;
+        }
+        public void SetGroupId(int groupId)
+        {
+            GroupId = groupId;
         }
     }
 }

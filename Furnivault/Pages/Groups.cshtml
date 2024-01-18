@@ -1,0 +1,59 @@
+﻿@page
+@model Furnivault.Pages.GroupsModel
+@{
+    ViewData["Title"] = "Manage Groups";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Manage Groups</h2>
+
+    <!-- Add Group Form -->
+    <form method="post" asp-action="AddGroup" class="mb-5">
+        <div class="row mb-3">
+            <div class="col-5 text-end">
+                Group name
+            </div>
+            <div class="col-5">
+                <input class="item-manager-field form-control" asp-for="NewGroupName" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5 text-end"></div>
+            <div class="col-5">
+                <button type="submit" class="button btn"><span class="icon material-symbols-rounded me-1"> add </span>Add Group</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Groups List -->
+    <div>
+        <h4>Existing Groups</h4>
+        @foreach (var group in Model.Groups)
+        {
+            <form method="post">
+                <input type="hidden" asp-for="GroupId" value="@group.Id" />
+                <div class="item-card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5 text-end">
+                                Group name
+                            </div>
+                            <div class="col-5">
+                                <input class="item-manager-field form-control" name="GroupName" value="@group.Name" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-5 text-end"></div>
+                            <div class="col-6">
+                                <button type="submit" asp-action="UpdateGroup" class="button btn"><span class="icon material-symbols-rounded me-1"> edit </span>Update Name</button>
+                                <button type="submit" asp-action="DeleteGroup" asp-route-groupId="@group.Id" class="button btn danger"><span class="icon material-symbols-rounded me-1"> delete </span>Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        }
+    </div>
+</div>

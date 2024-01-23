@@ -69,14 +69,14 @@ namespace Furnivault.Data.Repositories
             group.SetGroupId(newId);
         }
 
-        public void Update(Group group)
+        public void Update(int id, string name)
         {
             using var connection = new SqlConnection(_connectionString);
             const string sql = "UPDATE Groups SET Name = @Name WHERE Id = @Id";
             using var command = new SqlCommand(sql, connection);
 
-            command.Parameters.AddWithValue("@Id", group.Id);
-            command.Parameters.AddWithValue("@Name", group.Name);
+            command.Parameters.AddWithValue("@Id", id);
+            command.Parameters.AddWithValue("@Name", name);
 
             connection.Open();
             command.ExecuteNonQuery();

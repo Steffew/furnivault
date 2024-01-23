@@ -10,7 +10,7 @@ namespace Furnivault.Core.Interfaces
 
         void Add(Group group);
 
-        void Update(Group group);
+        void Update(int id, string newName);
 
         void Delete(int id);
     }

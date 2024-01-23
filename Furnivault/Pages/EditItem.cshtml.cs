@@ -13,7 +13,7 @@ namespace Furnivault.Pages
         public string Identifier { get; set; }
         public string Description { get; set; }
         public int SelectedGroupId { get; set; }
-        public List<Group> GroupList { get; set; }
+        public List<Group>? GroupList { get; set; }
     }
 
     public class EditItemModel : PageModel
@@ -55,8 +55,17 @@ namespace Furnivault.Pages
 
         public IActionResult OnPost()
         {
+            GroupList = LoadGroupList();
+            
             if (!ModelState.IsValid)
             {
+                foreach (var modelState in ModelState.Values)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        Console.WriteLine(error.ErrorMessage);
+                    }
+                }
                 return Page();
             }
 

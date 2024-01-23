@@ -8,7 +8,7 @@
     <h4 class="mb-4">Add new group</h4>
 
     <!-- Add Group Form -->
-    <form method="post" asp-action="AddGroup" class="mb-5">
+    <form method="post" asp-page-handler="AddGroup" class="mb-5">
         <div class="row mb-3">
             <div class="col-5 text-end">
                 Group name
@@ -39,7 +39,7 @@
                                 Group name
                             </div>
                             <div class="col-5">
-                                <input class="item-manager-field form-control" name="GroupName" value="@group.Name" />
+                                <input class="item-manager-field form-control" name="NewGroupName" value="@group.Name" />
                             </div>
                         </div>
                     </div>
@@ -47,8 +47,8 @@
                         <div class="row">
                             <div class="col-5 text-end"></div>
                             <div class="col-6">
-                                <button type="submit" asp-action="UpdateGroup" class="button btn"><span class="icon material-symbols-rounded me-1"> edit </span>Update Name</button>
-                                <button type="submit" asp-action="DeleteGroup" asp-route-groupId="@group.Id" class="button btn danger"><span class="icon material-symbols-rounded me-1"> delete </span>Delete</button>
+                                <button type="submit" asp-page-handler="UpdateGroup" class="button btn"><span class="icon material-symbols-rounded me-1"> edit </span>Update Name</button>
+                                <button type="submit" asp-page-handler="DeleteGroup" asp-route-groupId="@group.Id" class="button btn danger"><span class="icon material-symbols-rounded me-1"> delete </span>Delete</button>
                             </div>
                         </div>
                     </div>

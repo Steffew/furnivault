@@ -8,7 +8,7 @@ namespace Furnivault.Core.Entities
 
         public int Id { get; private set; }
         public string Name { get; private set; }
-        public List<Item> Items { get; private set; }
+        public List<Item>? Items { get; private set; }
 
         public Group(string name)
         {
@@ -20,10 +20,9 @@ namespace Furnivault.Core.Entities
             Id = id;
         }
 
-        public void Update(string name)
+        public void Update(string newName, int id)
         {
-            Name = name;
-            _groupRepository.Update(this);
+            _groupRepository.Update(id, newName);
         }
 
         public void AddItem(Item item)

@@ -18,7 +18,7 @@ namespace Furnivault.Pages
         public int GroupId { get; set; }
 
         [BindProperty]
-        public string GroupName { get; set; }
+        public string? GroupName { get; set; }
 
         public IEnumerable<Group> Groups => _groupCollection.GetAll();
 
@@ -38,6 +38,7 @@ namespace Furnivault.Pages
                 return Page();
             }
 
+
             _groupCollection.Add(NewGroupName);
             return RedirectToPage();
         }
@@ -52,7 +53,7 @@ namespace Furnivault.Pages
             var group = _groupCollection.GetById(GroupId);
             if (group != null)
             {
-                group.Update(GroupName);
+                group.Update(NewGroupName, GroupId);
                 return RedirectToPage();
             }
             else

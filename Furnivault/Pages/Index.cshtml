@@ -11,7 +11,7 @@
         <div class="col-4">
             <div class="item-card">
                 <div class="card-body">
-                    <h5 class="fw-bold">@item.Name</h5>
+                    <h6 class="fw-bold">@item.Name</h6>
                     <p class="card-text">@item.Description</p>
                 </div>
                 <div class="card-footer d-flex justify-content-between align-items-center">
@@ -28,7 +28,7 @@
         @if (Model.Items.Count == 0)
 		{
             <span class="icon huge material-symbols-rounded text-muted text-center mt-5"> sentiment_stressed </span>
-            <p class="text-muted text-center mt-2">There are no items in your vault!</p>
+            <p class="text-muted text-center mt-2">There are currently no items in your vault!</p>
         }
     </div>
 </div>

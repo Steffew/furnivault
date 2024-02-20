@@ -4,56 +4,44 @@
     ViewData["Title"] = "Manage Groups";
 }
 
-<div class="container mt-5">
+<div class="container mt-3">
     <h4 class="mb-4">Add new group</h4>
-
     <!-- Add Group Form -->
     <form method="post" asp-page-handler="AddGroup" class="mb-5">
         <div class="row mb-3">
-            <div class="col-5 text-end">
-                Group name
+            <div class="col-10 text-end">
+                <input type="text" class="form-control" placeholder="Enter group name" asp-for="NewGroupName" />
             </div>
-            <div class="col-5">
-                <input class="item-manager-field form-control" asp-for="NewGroupName" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-5 text-end"></div>
-            <div class="col-5">
-                <button type="submit" class="button btn"><span class="icon material-symbols-rounded me-1"> add </span>Add Group</button>
+            <div class="col-2">
+                <button type="submit" class="btn btn-primary"><span class="material-symbols-rounded me-1">add</span>Add Group</button>
             </div>
         </div>
     </form>
 
     <!-- Groups List -->
-    <div>
-        <h4>Existing Groups</h4>
+    <h4 class="mb-4">Existing Groups</h4>
+    <div class="row g-4">
         @foreach (var group in Model.Groups)
         {
-            <form method="post">
-                <input type="hidden" asp-for="GroupId" value="@group.Id" />
-                <div class="item-card mb-3">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-5 text-end">
-                                Group name
-                            </div>
-                            <div class="col-5">
-                                <input class="item-manager-field form-control" name="NewGroupName" value="@group.Name" />
+            <div class="col-4">
+                <div class="item-card">
+                    <form method="post" asp-page-handler="UpdateGroup">
+                        <div class="card-body">
+                            <input type="hidden" asp-for="@group.Id" />
+                            <div class="mb-3">
+                                <input type="text" class="form-control" value="@group.Name" asp-for="@group.Name" />
                             </div>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="row">
-                            <div class="col-5 text-end"></div>
-                            <div class="col-6">
-                                <button type="submit" asp-page-handler="UpdateGroup" class="button btn"><span class="icon material-symbols-rounded me-1"> edit </span>Update Name</button>
-                                <button type="submit" asp-page-handler="DeleteGroup" asp-route-groupId="@group.Id" class="button btn danger"><span class="icon material-symbols-rounded me-1"> delete </span>Delete</button>
+                        <div class="card-footer d-flex justify-content-between align-items-center">
+                            <small class="text-muted ms-1">ID: @group.Id</small>
+                            <div>
+                                <button type="submit" class="btn small button"><span class="small icon material-symbols-rounded me-1">save</span>Save</button>
+                                <button type="submit" asp-page-handler="DeleteGroup" asp-route-groupId="@group.Id" class="btn small button danger"><span class="small icon material-symbols-rounded me-1">delete</span>Delete</button>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         }
     </div>
 </div>
